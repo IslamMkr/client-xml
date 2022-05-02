@@ -11,7 +11,6 @@ const Accueil = () => {
             <img src={urn} alt="Logo Université de Rouen Normandie" />
             <h1>Service REST & Client</h1>
             <h4>Version : 1.2</h4>
-
             <h3>Développeurs : </h3>
             <ul>
                 <li><h3>Merzeg Ramzi</h3></li>
