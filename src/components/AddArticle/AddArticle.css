@@ -1,0 +1,45 @@
+.add-article {
+    width: 30%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-self: center;
+
+    border: none;
+    border-radius: 10px;
+
+    padding: 20px;
+
+    background-color: rgb(250, 250, 253);
+
+    min-width: 300px;
+}
+
+.form-group {
+    display: flex;
+    flex-direction: column;
+
+    margin-bottom: 16px;
+}
+
+.form-group input {
+    padding: 8px 10px;
+    margin-top: 6px;
+}
+
+.radios {
+    display: flex;
+    gap: 0 20px;
+}
+
+.radios p {
+    margin: 2px 0px; 
+}
+
+.btn-form {
+    align-self: flex-start;
+    margin-top: 20px;
+
+    padding: 12px 30px;
+    background-color: rgb(112, 182, 155);
+}

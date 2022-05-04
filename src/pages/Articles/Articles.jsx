@@ -1,47 +1,59 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import Header from '../../components/Header/Header'
+import parse from 'html-react-parser'
+
+import { axiosInstance } from '../../utils/db'
+import { extractBodyFromHtml } from '../../utils/StringUtils'
+
+import "./Articles.css"
+
+import { IoMdAdd, IoMdClose } from "react-icons/io"
+
+import AddArticleForm from "../../components/AddArticle/AddArticleForm"
 
 const Articles = () => {
-    const articles = [
-        {
-            guid: "lzknflklzref",
-            title: "Article 01",
-            published: "20-12-2022"
-        },
-        {
-            guid: "lzknflfeffefklzref",
-            title: "Article 02",
-            published: "20-02-2022"
-        }
-    ]
+
+    const [fluxHtml , setFluxHtml] = useState("")
+    const [isFormShowing , setIsFormShowing] = useState(false)
+
+    useEffect(() => {
+        axiosInstance.get("/rss22/resume/html")
+            .then( res => {
+                const body = extractBodyFromHtml(res.data)
+
+                setFluxHtml(body)
+            })
+    }, [])
 
     return (
         <div className='articles'>
             <Header active="articles" />
 
-            <div>
-                <h2>Liste des articles : </h2>
-                <table>
-                    <thead>
-                        <tr>
-                            <th> Guid </th>
-                            <th> Titre </th>
-                            <th> Date de publication </th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        {
-                            articles.map (article => 
-                                <tr key={article.guid}>
-                                    <td><p>{article.guid}</p></td>
-                                    <td><p>{article.title}</p></td>
-                                    <td><p>{article.published}</p></td>
-                                </tr>
-                            )
-                        }
-                    </tbody>
-                </table>
+            <div className='all-articles'>
+                {
+                    fluxHtml.length > 0 ? parse(fluxHtml) : 
+                    
+                    <p>Erreur</p>
+                } 
             </div>
+
+            <hr />
+            
+            <div className='add-section'>
+                <p>Ajouter un article</p>
+                <div className={isFormShowing ? "btn-close btn" : "btn-add btn"} onClick={() => setIsFormShowing(!isFormShowing)}>
+                    {
+                        !isFormShowing ?
+                       <IoMdAdd /> :
+                       <IoMdClose />
+                    }
+                </div>
+            </div>
+
+            {
+                isFormShowing && 
+                <AddArticleForm />
+            }
         </div>
     )
 }
