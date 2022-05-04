@@ -1,7 +1,20 @@
-import React from 'react'
+import axios from 'axios'
+import React, { useEffect, useState } from 'react'
 import Header from '../../components/Header/Header'
+import parse from 'html-react-parser'
 
 const Articles = () => {
+
+    useEffect(()=>{
+        axios.get("http://localhost:8080/rss22/resume/html").then((res)=>{
+            setfluxhtml(res.data.substring(res.data.indexOf("<body>")+6,res.data.lastIndexOf("</body>")));
+        })
+    }, [])
+
+
+
+    const [fluxhtml , setfluxhtml] = useState("")
+
     const articles = [
         {
             guid: "lzknflklzref",
@@ -19,7 +32,7 @@ const Articles = () => {
         <div className='articles'>
             <Header active="articles" />
 
-            <div>
+          {fluxhtml.length > 0 ? parse(fluxhtml) : <div>
                 <h2>Liste des articles : </h2>
                 <table>
                     <thead>
@@ -41,7 +54,7 @@ const Articles = () => {
                         }
                     </tbody>
                 </table>
-            </div>
+            </div>}  
         </div>
     )
 }
