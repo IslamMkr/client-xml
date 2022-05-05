@@ -3,14 +3,17 @@ import React, { useEffect, useState } from 'react'
 import Header from '../../components/Header/Header'
 import { axiosInstance } from '../../utils/db'
 import { extractBodyFromHtml } from '../../utils/StringUtils'
+import { useParams } from 'react-router-dom'
 
-const Aide = () => {
+const Delete = () => {
 
 	const [fluxHtml , setFluxHtml] = useState("")
+	const { guid } = useParams();
+
 	useEffect(() => {
-		axiosInstance.get("/help")
+		axiosInstance.delete(`/rss22/delete/${guid}`)
 				.then( res => {
-						const body = extractBodyFromHtml(res.data)
+						const body = res.data
 
 						setFluxHtml(body)
 				})
@@ -30,4 +33,4 @@ const Aide = () => {
     )
 }
 
-export default Aide
+export default Delete

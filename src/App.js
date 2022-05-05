@@ -7,6 +7,8 @@ import {
 import Accueil from './pages/Accueil/Accueil';
 import Articles from './pages/Articles/Articles';
 import Aide from './pages/Aide/Aide';
+import Article from './pages/Article/Article';
+import Delete from './pages/delete/Delete';
 
 function App() {
 	return (
@@ -16,6 +18,8 @@ function App() {
 					<Route path='/' element={<Accueil />} />
 					<Route path='articles' element={<Articles />} />
 					<Route path='aide' element={<Aide />} />
+					<Route path='/rss22/html/:guid' element={<Article />} />
+					<Route path='/rss22/delete/:guid' element={<Delete />} />
 				</Routes>
 			</div>
 		</Router>
