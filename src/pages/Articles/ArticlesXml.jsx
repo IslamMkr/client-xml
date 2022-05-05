@@ -21,7 +21,9 @@ const ArticlesXml = () => {
         <div className='articles'>
             <Header active="xml" />
         
-            <p id="xml-data">{xmlData}</p>
+            <div className="all-articles">
+                <p>{xmlData}</p>
+            </div>
         </div>
     )
 }

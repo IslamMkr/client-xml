@@ -7,16 +7,9 @@ import { extractBodyFromHtml } from '../../utils/StringUtils'
 
 import "./Articles.css"
 
-import { IoMdAdd, IoMdClose } from "react-icons/io"
-
-import AddArticleForm from "../../components/AddArticle/AddArticleForm"
-import AddArticleFile from "../../components/AddArticle/AddArticleFile"
-
 const ArticlesHtml = () => {
 
     const [fluxHtml , setFluxHtml] = useState("")
-    const [isFormShowing , setIsFormShowing] = useState(false)
-    const [formType, setFormType] = useState("form")
 
     useEffect(() => {
         axiosInstance.get("/rss22/resume/html")
@@ -37,34 +30,6 @@ const ArticlesHtml = () => {
                     <p>Loading</p>
                 } 
             </div>
-
-            <hr />
-            
-            <div className='add-section'>
-                <p>Ajouter un article</p>
-                <div className={isFormShowing ? "btn-close btn" : "btn-add btn"} onClick={() => setIsFormShowing(!isFormShowing)}>
-                    {
-                        !isFormShowing ?
-                       <IoMdAdd /> :
-                       <IoMdClose />
-                    }
-                </div>
-            </div>
-
-            {
-                isFormShowing && 
-                <div className="form">
-                    <div className='radios'>
-                        <p><input type="radio" name="form-type" onChange={e => setFormType(e.target.value)} value="form" checked={formType === 'form'} /> Formulaire </p>
-                        <p><input type="radio" name="form-type" onChange={e => setFormType(e.target.value)} value="file" checked={formType === 'file'} /> Fichier XML </p>
-                    </div>
-                    {
-                        formType === "file" ?
-                        <AddArticleFile /> :
-                        <AddArticleForm />
-                    }
-                </div>
-            }
         </div>
     )
 }

@@ -1,9 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import Header from '../../components/Header/Header'
-import parse from 'html-react-parser'
 
 import { axiosInstance } from '../../utils/db'
-import { extractBodyFromHtml } from '../../utils/StringUtils'
 
 import "./ArticleXml.css"
 import { useParams } from 'react-router-dom'
@@ -30,7 +28,7 @@ const ArticleXml = () => {
             <Header active="articles" />
 
             <div className='all-articles'>
-            <p>{message}</p>
+                <p>{message}</p>
             </div>
         </div>
     )

@@ -7,6 +7,7 @@ import {
 import Accueil from './pages/Accueil/Accueil';
 import ArticlesHtml from './pages/Articles/ArticlesHtml';
 import ArticlesXml from './pages/Articles/ArticlesXml';
+import ArticlesJson from './pages/Articles/ArticlesJson';
 import Aide from './pages/Aide/Aide';
 import Article from './pages/Article/Article';
 import Delete from './pages/delete/Delete';
@@ -20,10 +21,11 @@ function App() {
 					<Route path='/' element={<Accueil />} />
 					<Route path='articles/html' element={<ArticlesHtml />} />
 					<Route path='articles/xml' element={<ArticlesXml />} />
+					<Route path='articles' element={<ArticlesJson />} />
 					<Route path='aide' element={<Aide />} />
-					<Route path='article/:guid' element={<Article />} />
-					<Route path='article/delete/:guid' element={<Delete />} />
-					<Route path='article/xml/:guid' element={<ArticleXml />} />
+					<Route path='articles/html/:guid' element={<Article />} />
+					<Route path='articles/delete/:guid' element={<Delete />} />
+					<Route path='articles/xml/:guid' element={<ArticleXml />} />
 				</Routes>
 			</div>
 		</Router>

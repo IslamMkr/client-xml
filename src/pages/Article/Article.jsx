@@ -13,7 +13,7 @@ import { useParams } from 'react-router-dom'
 const Article = () => {
 
     const [fluxHtml , setFluxHtml] = useState("")
-    const [isFormShowing , setIsFormShowing] = useState(false)
+    //const [isFormShowing , setIsFormShowing] = useState(false)
     const { guid } = useParams();
 
     useEffect(() => {

@@ -1,8 +1,6 @@
-import parse from 'html-react-parser'
 import React, { useEffect, useState } from 'react'
 import Header from '../../components/Header/Header'
 import { axiosInstance } from '../../utils/db'
-import { extractBodyFromHtml } from '../../utils/StringUtils'
 import { useParams } from 'react-router-dom'
 import PopUp from '../../components/PopUp/PopUp'
 import "./Delete.css"
