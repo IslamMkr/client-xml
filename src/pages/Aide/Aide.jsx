@@ -23,7 +23,7 @@ const Aide = () => {
                 {
                     fluxHtml.length > 0 ? parse(fluxHtml) : 
                     
-                    <p>Erreur</p>
+                    <p>Loading</p>
                 } 
             </div>
 		</div>

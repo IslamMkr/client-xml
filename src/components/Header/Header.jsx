@@ -11,7 +11,8 @@ export const Header = ({ active }) => {
             </div>
             <nav>
                 <Link to='/' id={active === 'accueil' ? 'active' : ''} className='nav-item accueil'>Accueil</Link>
-                <Link to='/articles' id={active === 'articles' ? 'active' : ''} className='nav-item articles'>Articles</Link>
+                <Link to='/articles/html' id={active === 'html' ? 'active' : ''} className='nav-item articles'>HTML</Link>
+                <Link to='/articles/xml' id={active === 'xml' ? 'active' : ''} className='nav-item articles'>XML</Link>
                 <Link to='/aide' id={active === 'aide' ? 'active' : ''} className='nav-item aide'>Aide</Link>
             </nav>
         </div>

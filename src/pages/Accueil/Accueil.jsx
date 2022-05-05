@@ -30,7 +30,8 @@ const Accueil = () => {
             <Header active="accueil" />
             
             {
-                fluxHtml.length > 0 ? parse(fluxHtml) : <p>Erreur.</p>
+                fluxHtml.length > 0 ? parse(fluxHtml) : 
+                    <p>Loading</p>
             }
         </div>
     )

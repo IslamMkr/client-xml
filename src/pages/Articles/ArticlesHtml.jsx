@@ -12,7 +12,7 @@ import { IoMdAdd, IoMdClose } from "react-icons/io"
 import AddArticleForm from "../../components/AddArticle/AddArticleForm"
 import AddArticleFile from "../../components/AddArticle/AddArticleFile"
 
-const Articles = () => {
+const ArticlesHtml = () => {
 
     const [fluxHtml , setFluxHtml] = useState("")
     const [isFormShowing , setIsFormShowing] = useState(false)
@@ -29,13 +29,12 @@ const Articles = () => {
 
     return (
         <div className='articles'>
-            <Header active="articles" />
+            <Header active="html" />
 
             <div className='all-articles'>
                 {
                     fluxHtml.length > 0 ? parse(fluxHtml) : 
-                    
-                    <p>Erreur</p>
+                    <p>Loading</p>
                 } 
             </div>
 
@@ -70,4 +69,4 @@ const Articles = () => {
     )
 }
 
-export default Articles
+export default ArticlesHtml
