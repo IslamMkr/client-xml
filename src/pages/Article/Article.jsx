@@ -27,7 +27,7 @@ const Article = () => {
 
     return (
         <div className='articles'>
-            
+            <Header active="articles" />
 
             <div className='all-articles'>
                 {
