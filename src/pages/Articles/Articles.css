@@ -73,3 +73,11 @@ hr {
     margin-top: 20px;
     width: 80%;
 }
+
+.form {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    align-self: center;
+}
