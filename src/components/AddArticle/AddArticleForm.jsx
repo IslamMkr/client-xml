@@ -5,6 +5,8 @@ import "./AddArticle.css"
 import { axiosInstance } from "../../utils/db"
 import { IoMdAdd, IoMdClose } from "react-icons/io"
 
+import PopUp from "../PopUp/PopUp"
+
 const AddArticle = () => {
     const [title, setTitle] = useState("")
     const [category, setCategory] = useState("")
@@ -22,10 +24,17 @@ const AddArticle = () => {
 
     const [addImage, setAddImage] = useState(false)
 
+    const [showPopUp, setShowPopUp] = useState(false)
+
+    const [message, setMessage] = useState("")
+
+    const togglePopUp = () => {
+        setShowPopUp(true)
+    }
+
     const handleAddArticle = () => {
         const fluxXml = getDataAsXml()
-            
-
+        
         axiosInstance.post("/insert", fluxXml,
             {   
                 headers: {
@@ -34,7 +43,8 @@ const AddArticle = () => {
             }
         )
             .then(res => {
-                console.log(res)
+                setMessage(res.data)
+                togglePopUp()
             })
             .catch(err => {
                 console.log(err)
@@ -58,7 +68,7 @@ const AddArticle = () => {
                 }
                 <content type="${contentType}" href="">${content}</content>
                 ${
-                    author === "" ?
+                    author === "" ? 
                     `<contributor>
                         <name>${contributor}</name>
                         <email>${contributorEmail}</email>
@@ -79,7 +89,7 @@ const AddArticle = () => {
     }
 
     return (
-        <div className='add-article'>
+        <div className='add-article'>          
             <div className="form-group">
                 <label>Titre :</label>
                 <input type="text" value={title} onChange={e => setTitle(e.target.value)}/>
@@ -154,6 +164,12 @@ const AddArticle = () => {
             </div>
 
             <button className='btn-form btn' onClick={handleAddArticle}>Ajouter</button>
+        
+            
+            {
+                showPopUp &&
+                <PopUp message={message} onClose={() => setShowPopUp(false)} />
+            }  
         </div>
     )
 }

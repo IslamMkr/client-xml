@@ -9,6 +9,8 @@ const AddArticleFile = () => {
 	const handleAddArticle = () => {
 		let formData = new FormData()
 		formData.append("file", files[0])
+
+		console.log(files)
 		
 		axiosInstance.post(
 			"/insert",
