@@ -10,6 +10,7 @@ import ArticlesXml from './pages/Articles/ArticlesXml';
 import Aide from './pages/Aide/Aide';
 import Article from './pages/Article/Article';
 import Delete from './pages/delete/Delete';
+import ArticleXml from './pages/ArticleXml/ArticleXml';
 
 function App() {
 	return (
@@ -22,6 +23,7 @@ function App() {
 					<Route path='aide' element={<Aide />} />
 					<Route path='article/:guid' element={<Article />} />
 					<Route path='article/delete/:guid' element={<Delete />} />
+					<Route path='article/xml/:guid' element={<ArticleXml />} />
 				</Routes>
 			</div>
 		</Router>
